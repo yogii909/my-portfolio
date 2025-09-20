@@ -1,0 +1,159 @@
+.achievements {
+  position: relative;
+  overflow: hidden;
+}
+
+.achievements-container {
+  display: grid;
+  gap: 30px;
+  margin-top: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 105, 180, 0.05));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  position: relative;
+  opacity: 0;
+  animation: zoomIn 0.8s ease forwards;
+  transition: all 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.achievement-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+}
+
+.achievement-icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background: linear-gradient(135deg, #ffd700, #ff69b4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotate 4s linear infinite;
+}
+
+.achievement-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+  font-family: 'Kalam', cursive;
+}
+
+.achievement-content p {
+  color: #b8c1ec;
+  line-height: 1.6;
+}
+
+.achievement-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ffd700;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+.achievements-decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  color: #ffd700;
+  opacity: 0.2;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.star i {
+  font-size: 1.2rem;
+}
+
+.star-1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.star-2 {
+  top: 20%;
+  right: 15%;
+  animation-delay: 0.5s;
+  font-size: 0.8rem;
+}
+
+.star-3 {
+  bottom: 30%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.star-4 {
+  bottom: 10%;
+  right: 10%;
+  animation-delay: 1.5s;
+  font-size: 1.5rem;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .achievement-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 20px;
+  }
+  
+  .achievement-badge {
+    position: static;
+    margin-top: 20px;
+  }
+}

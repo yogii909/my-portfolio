@@ -1,0 +1,117 @@
+.education {
+  position: relative;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 50px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.education-card {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  position: relative;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.education-icon {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  background: linear-gradient(135deg, #00d4ff, #090979);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.education-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.education-card:hover .education-icon {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+.education-content {
+  flex: 1;
+}
+
+.education-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #00d4ff;
+}
+
+.institution,
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #b8c1ec;
+}
+
+.institution i,
+.duration i {
+  color: #ff69b4;
+  font-size: 0.9rem;
+}
+
+.details {
+  color: #8892b0;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.education-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.decoration-line {
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd700);
+  transform: translateY(-50%) rotate(45deg);
+  animation: slide 3s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    right: -100px;
+  }
+  to {
+    right: 100px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .education-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .education-icon {
+    margin: 0 auto;
+  }
+}
