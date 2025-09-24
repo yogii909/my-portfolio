@@ -55,13 +55,14 @@ const Navbar = ({ portfolioType, onSwitch }) => {
               <span className="switch-icon">💻</span>
               Software
             </button>
-            <button 
-              className={`switch-btn ${portfolioType === 'networking' ? 'active' : ''}`}
-              onClick={() => onSwitch('networking')}
-            >
-              <span className="switch-icon">🌐</span>
-              Networking
-            </button>
+
+              <button
+                  className={`switch-btn ${portfolioType === 'networking' ? 'active' : ''}`} // <-- Change to 'networking'
+                  onClick={() => onSwitch('networking')} // <-- Change to 'networking'
+              >
+                  <span className="switch-icon">🌐</span>
+                  Networking
+              </button>
             <div 
               className="switch-indicator"
               style={{ 

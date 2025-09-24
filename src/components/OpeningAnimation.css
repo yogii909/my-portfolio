@@ -1,146 +1,92 @@
+/* General container styles */
 .opening-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(ellipse at center, #151935 0%, #0a0e27 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse at center, #151935 0%, #0a0e27 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    overflow: hidden;
+    transition: opacity 0.5s ease-out; /* For fade-out */
 }
 
-.sparks-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.spark {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #00d4ff 0%, transparent 70%);
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
-  animation: sparkFloat 3s ease-in-out infinite;
-}
-
-@keyframes sparkFloat {
-  0% {
-    transform: translateY(100vh) scale(0);
+.opening-animation.fade-out {
     opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50vh) scale(1.5);
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) scale(0);
-    opacity: 0;
-  }
 }
 
 .opening-content {
-  text-align: center;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+    text-align: center;
 }
 
-.opening-content.show {
-  opacity: 1;
-}
-
+/* Name animation: Fades in and slides up */
 .opening-name {
-  font-family: 'Kalam', cursive;
-  font-size: 5rem;
-  font-weight: 700;
-  background: linear-gradient(45deg, #00d4ff, #ff69b4, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 30px;
-  position: relative;
-}
+    font-family: 'Kalam', cursive;
+    font-size: 5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #00d4ff, #ff69b4, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
 
-.letter {
-  display: inline-block;
-  opacity: 0;
-  animation: letterGlow 1s ease forwards;
-}
-
-@keyframes letterGlow {
-  0% {
+    /* Initial state */
     opacity: 0;
-    transform: translateY(50px) rotateY(90deg);
-    filter: blur(10px);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(0) rotateY(45deg);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) rotateY(0);
-    filter: blur(0);
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
-  }
+    transform: translateY(30px);
+    /* Smooth transition */
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+/* Tagline animation: Fades in and slides up after the name */
 .opening-tagline {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+    /* Initial state */
+    opacity: 0;
+    transform: translateY(30px);
+    /* Smooth transition with a delay */
+    transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
 }
 
-.opening-tagline.show {
-  opacity: 1;
-  transform: translateY(0);
+/* Trigger animation when 'show' class is added */
+.opening-content.show .opening-name,
+.opening-content.show .opening-tagline {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .opening-tagline p {
-  font-size: 1.5rem;
-  color: #b8c1ec;
-  font-weight: 300;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #b8c1ec;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
+/* Underline animation: Expands from the center */
 .tagline-underline {
-  width: 200px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-  margin: 20px auto 0;
-  animation: expand 1s ease forwards;
-}
-
-@keyframes expand {
-  from {
-    width: 0;
-  }
-  to {
     width: 200px;
-  }
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    margin: 20px auto 0;
+
+    /* Initial state */
+    transform: scaleX(0);
+    /* Smooth transition with a longer delay */
+    transition: transform 1s ease-out 0.5s;
 }
 
-/* Responsive */
+.opening-content.show .tagline-underline {
+    transform: scaleX(1);
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-  .opening-name {
-    font-size: 3rem;
-  }
-  
-  .opening-tagline p {
-    font-size: 1rem;
-  }
+    .opening-name {
+        font-size: 3rem;
+    }
+    .opening-tagline p {
+        font-size: 1rem;
+    }
 }
